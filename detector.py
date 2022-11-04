@@ -12,23 +12,20 @@ class CVDetector(Thread):
         self.birdsCascade = cv2.CascadeClassifier("static/birds1.xml")
 
     def process(self):
-        try:
+        frame = self.queue.get()
+        while frame is not self.sentinel:
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            birds = self.birdsCascade.detectMultiScale(
+                gray,
+                scaleFactor=1.4,
+                minNeighbors=5,
+                #minSize=(10, 10),
+                maxSize=(30, 30),
+                flags = cv2.CASCADE_SCALE_IMAGE
+            )
+            if (len(birds)>=self.MAX_NUM_BIRDS):
+                self.MAX_NUM_BIRDS = len(birds)
             frame = self.queue.get()
-            while frame is not self.sentinel:
-                gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-                birds = self.birdsCascade.detectMultiScale(
-                    gray,
-                    scaleFactor=1.4,
-                    minNeighbors=5,
-                    #minSize=(10, 10),
-                    maxSize=(30, 30),
-                    flags = cv2.CASCADE_SCALE_IMAGE
-                )
-                if (len(birds)>=self.MAX_NUM_BIRDS):
-                    self.MAX_NUM_BIRDS = len(birds)
-                frame = self.queue.get()
-        except Exception as exc:
-            print(frame)
         print('max number is: ',self.MAX_NUM_BIRDS)
         data = {str(self.MAX_NUM_BIRDS)}
         df = pd.DataFrame(data, columns=['Max Num Of Birds'])
