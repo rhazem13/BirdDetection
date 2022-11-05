@@ -8,7 +8,7 @@ queue = Queue()
 video_url = 'static/birds.mp4'
 output_path = './static/sharaf_birds.csv'
 cap = cv2.VideoCapture(video_url)
-cv_reader = CVReader(cap ,video_url, queue, SENTINEL )
+cv_reader = CVReader(cap , queue, SENTINEL )
 cv_detector = CVDetector(queue, output_path, SENTINEL)
 
 cv_reader.start()
