@@ -18,7 +18,7 @@ class CVDetector(Thread):
             birds = self.birdsCascade.detectMultiScale(
                 gray,
                 scaleFactor=1.4,
-                minNeighbors=5,
+                minNeighbors=2,
                 #minSize=(10, 10),
                 maxSize=(30, 30),
                 flags = cv2.CASCADE_SCALE_IMAGE
