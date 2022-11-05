@@ -44,7 +44,7 @@ class CVDetector(Thread):
             count +=1
             if (count/frames_count)>last_percent+0.03:
                 last_percent = count/frames_count
-                print(last_percent*100,' has been processed')
+                print('Processing... ',int(last_percent*100),'%')
         print('max number is: ',self.MAX_NUM_BIRDS)
         data = {str(self.MAX_NUM_BIRDS)}
         df = pd.DataFrame(data, columns=['Max Num Of Birds'])
