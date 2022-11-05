@@ -6,7 +6,12 @@ from sql_metadata import Parser
 from sql_metadata.compat import get_query_columns, get_query_tables
 import pandas as pd
 
-#def execute(query) : 
+def execute(query) : 
+    dic = _parse(query)
+   
+    DF =  _extract_attrs_from_file(dic["Tables"] , dic["Columns"])
+
+    return DF 
 
 """
     takes query as string
