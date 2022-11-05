@@ -11,6 +11,8 @@ Contain a thread which load the trained model and detect birds in each frame of 
 
 # Output
 ![ed5f73ac-efa2-4e3b-a631-373b37e6b65a](https://user-images.githubusercontent.com/58918060/200135295-57dd6883-c96a-4c1d-bee2-6fb63f335376.jpg)
+
+
 ![image](https://user-images.githubusercontent.com/58918060/200135293-e0525581-1bcd-4201-9ffc-30bc7733866c.png)
 
 # License
