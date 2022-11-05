@@ -1,1 +1,2 @@
-# BirdDetection
+# Bird Detection using OpenCV2
+
